@@ -42,7 +42,7 @@
 
     header {
       text-align: center;
-      padding: 88px 20px 52px;
+      padding: 88px 20px 44px;
       max-width: 900px;
       margin: 0 auto;
       animation: fadeUp 0.8s ease-out;
@@ -63,20 +63,13 @@
     }
 
     header h1 {
-      margin: 0 0 12px;
+      margin: 0;
       font-size: clamp(2.4rem, 5vw, 3.6rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #ffffff 30%, #e8a598 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    header p {
-      margin: 0 auto;
-      max-width: 620px;
-      color: var(--text-muted);
-      font-size: 1.12rem;
     }
 
     main {
@@ -235,9 +228,6 @@
   <header>
     <div class="badge">WGU Computer Science &bull; Dallas, TX</div>
     <h1>Belkin Balcarcel</h1>
-    <p>
-      Computer Science student building reliable software, web applications, and data-driven tools across multiple languages.
-    </p>
   </header>
 
   <main>
@@ -270,8 +260,8 @@
             A* pathfinding to route drones around no-fly zones and NumPy to predict remaining battery life.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="https://autonomous-fleet-planner.onrender.com" target="_blank" rel="noopener">Launch Live Demo</a>
-            <a class="btn btn-outline" href="https://github.com/belkin-balcarcel/autonomous-fleet-planner" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-primary" href="https://onrender.com" target="_blank" rel="noopener">Launch Live Demo</a>
+            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -287,7 +277,7 @@
             arrays, pointers, email validation checks, and degree program filters.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline" href="https://github.com/belkin-balcarcel/student-roster-management" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -315,7 +305,7 @@
       <h2>Contact</h2>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:belkinbal15@hotmail.com">belkinbal15@hotmail.com</a>
-        <a class="btn btn-outline" href="https://github.com/belkin-balcarcel" target="_blank" rel="noopener">github.com/belkin-balcarcel</a>
+        <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">://github.com</a>
       </div>
     </section>
   </main>
@@ -349,13 +339,15 @@
         p.x += p.vx;
         p.y += p.vy;
 
-if (p.x < 0 || p.x > width) p.vx *= -1;
-if (p.y < 0 || p.y > height) p.vy *= -1;
-ctx.beginPath();
-ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
-ctx.fill();
-for (let j = i + 1; j < particles.length; j++) {
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
 const p2 = particles[j];
 const dx = p.x - p2.x;
 const dy = p.y - p2.y;
@@ -378,4 +370,4 @@ initParticles();
 });
 resize();
 initParticles();
-animate(); 
+animate();
