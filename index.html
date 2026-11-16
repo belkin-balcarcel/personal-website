@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Belkin Balcarcel | Computer Science &amp; Software Engineering</title>
+  <title>Belkin Balcarcel | Computer Science Portfolio</title>
   <style>
     :root {
-      --bg-dark: #070b14;
-      --card-bg: rgba(15, 23, 42, 0.65);
-      --card-border: rgba(56, 189, 248, 0.22);
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.35);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg-dark: #0e0b10;
+      --card-bg: rgba(24, 19, 28, 0.72);
+      --card-border: rgba(232, 165, 152, 0.25);
+      --accent: #e8a598;
+      --accent-soft: #f5cac3;
+      --accent-glow: rgba(232, 165, 152, 0.32);
+      --text-main: #faf8f9;
+      --text-muted: #b8adb6;
     }
 
     * {
@@ -28,7 +29,7 @@
       overflow-x: hidden;
     }
 
-    /* Full-screen animated canvas background */
+    /* Full-screen animated particle network background */
     #bg-canvas {
       position: fixed;
       top: 0;
@@ -36,7 +37,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: radial-gradient(circle at 20% 20%, #0f1c38 0%, #070b14 60%, #03050a 100%);
+      background: radial-gradient(circle at 20% 20%, #231828 0%, #0e0b10 60%, #070508 100%);
     }
 
     header {
@@ -55,9 +56,9 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent-soft);
+      background: rgba(232, 165, 152, 0.12);
+      border: 1px solid rgba(232, 165, 152, 0.35);
       margin-bottom: 18px;
     }
 
@@ -66,7 +67,7 @@
       font-size: clamp(2.4rem, 5vw, 3.6rem);
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+      background: linear-gradient(135deg, #ffffff 30%, #e8a598 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -92,15 +93,15 @@
       border-radius: 16px;
       padding: 32px;
       margin-bottom: 28px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       animation: fadeUp 0.9s ease-out;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: rgba(56, 189, 248, 0.55);
-      box-shadow: 0 16px 45px rgba(56, 189, 248, 0.12);
+      border-color: rgba(232, 165, 152, 0.6);
+      box-shadow: 0 16px 45px rgba(232, 165, 152, 0.14);
     }
 
     h2 {
@@ -130,8 +131,8 @@
     }
 
     .project-box {
-      background: rgba(9, 14, 28, 0.65);
-      border: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(14, 11, 16, 0.72);
+      border: 1px solid rgba(232, 165, 152, 0.16);
       border-radius: 12px;
       padding: 24px;
       transition: border-color 0.25s ease, transform 0.2s ease;
@@ -161,9 +162,9 @@
       font-weight: 600;
       padding: 3px 10px;
       border-radius: 6px;
-      background: rgba(56, 189, 248, 0.12);
-      color: #7dd3fc;
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(232, 165, 152, 0.12);
+      color: var(--accent-soft);
+      border: 1px solid rgba(232, 165, 152, 0.28);
     }
 
     .project-desc {
@@ -190,24 +191,24 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #040812;
+      color: #140f17;
       box-shadow: 0 0 18px var(--accent-glow);
     }
 
     .btn-primary:hover {
-      background: #7dd3fc;
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.6);
+      background: var(--accent-soft);
+      box-shadow: 0 0 24px rgba(232, 165, 152, 0.55);
     }
 
     .btn-outline {
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: #e2e8f0;
+      border: 1px solid rgba(232, 165, 152, 0.35);
+      color: #f3ecee;
       background: rgba(255, 255, 255, 0.03);
     }
 
     .btn-outline:hover {
       border-color: var(--accent);
-      color: var(--accent);
+      color: var(--accent-soft);
     }
 
     .contact-links {
@@ -235,7 +236,7 @@
     <div class="badge">WGU Computer Science &bull; Dallas, TX</div>
     <h1>Belkin Balcarcel</h1>
     <p>
-      Building full-stack web apps, C++ systems, and Python backend tools with real-time pathfinding and cloud deployment.
+      Computer Science student building reliable software, web applications, and data-driven tools across multiple languages.
     </p>
   </header>
 
@@ -243,9 +244,9 @@
     <section class="card">
       <h2>About Me</h2>
       <p style="margin: 0; color: var(--text-muted);">
-        I am a Bachelor of Science in Computer Science student at Western Governors University.
-        I enjoy building practical software from scratch using C++, Python, SQL, and modern cloud tools,
-        and I am actively seeking Software Engineering and Computer Science internships.
+        I am pursuing a Bachelor of Science in Computer Science at Western Governors University.
+        I enjoy turning ideas into working software using C++, Python, SQL, and modern web and cloud tools,
+        and I am building a strong foundation for roles across software engineering, backend systems, and technology.
       </p>
     </section>
 
@@ -269,8 +270,8 @@
             A* pathfinding to route drones around no-fly zones and NumPy to predict remaining battery life.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="https://onrender.com" target="_blank" rel="noopener">Launch Live Demo</a>
-            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-primary" href="https://autonomous-fleet-planner.onrender.com" target="_blank" rel="noopener">Launch Live Demo</a>
+            <a class="btn btn-outline" href="https://github.com/belkin-balcarcel/autonomous-fleet-planner" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -286,7 +287,7 @@
             arrays, pointers, email validation checks, and degree program filters.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn btn-outline" href="https://github.com/belkin-balcarcel/student-roster-management" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -303,7 +304,7 @@
             and live cloud demos hosted on GitHub Pages.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline" href="https://github.com/personal-website" target="_blank" rel="noopener">View Repository</a>
+            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Repository</a>
           </div>
         </div>
 
@@ -314,7 +315,7 @@
       <h2>Contact</h2>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:belkinbal15@hotmail.com">belkinbal15@hotmail.com</a>
-        <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">://github.com</a>
+        <a class="btn btn-outline" href="https://github.com/belkin-balcarcel" target="_blank" rel="noopener">github.com/belkin-balcarcel</a>
       </div>
     </section>
   </main>
@@ -348,12 +349,11 @@
         p.x += p.vx;
         p.y += p.vy;
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-ctx.fillStyle = "rgba(56, 189, 248, 0.75)";
+if (p.x < 0 || p.x > width) p.vx *= -1;
+if (p.y < 0 || p.y > height) p.vy *= -1;
+ctx.beginPath();
+ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
 ctx.fill();
 for (let j = i + 1; j < particles.length; j++) {
 const p2 = particles[j];
@@ -364,7 +364,7 @@ if (dist < 135) {
 ctx.beginPath();
 ctx.moveTo(p.x, p.y);
 ctx.lineTo(p2.x, p2.y);
-ctx.strokeStyle = rgba(56, 189, 248, ${(1 - dist / 135) * 0.28});
+ctx.strokeStyle = rgba(232, 165, 152, ${(1 - dist / 135) * 0.28});
 ctx.lineWidth = 1;
 ctx.stroke();
 }
@@ -378,4 +378,4 @@ initParticles();
 });
 resize();
 initParticles();
-animate();
+animate(); 
