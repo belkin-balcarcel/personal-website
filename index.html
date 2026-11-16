@@ -259,8 +259,8 @@
             A* pathfinding to route drones around no-fly zones and NumPy to predict remaining battery life.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="https://onrender.com" target="_blank" rel="noopener">Launch Live Demo</a>
-            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
+            <a id="demo-link" class="btn btn-primary" href="#" target="_blank" rel="noopener">Launch Live Demo</a>
+            <a id="repo-planner" class="btn btn-outline" href="#" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -276,7 +276,7 @@
             arrays, pointers, email validation checks, and degree program filters.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
+            <a id="repo-roster" class="btn btn-outline" href="#" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -293,7 +293,7 @@
             and live cloud demos hosted on GitHub Pages.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Repository</a>
+            <a id="repo-site" class="btn btn-outline" href="#" target="_blank" rel="noopener">View Repository</a>
           </div>
         </div>
 
@@ -304,12 +304,25 @@
       <h2>Contact</h2>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:belkinbal15@hotmail.com">belkinbal15@hotmail.com</a>
-        <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">://github.com</a>
+        <a id="github-profile-btn" class="btn btn-outline" href="#" target="_blank" rel="noopener">GitHub Profile</a>
       </div>
     </section>
   </main>
 
   <script>
+    const user = "belkin-balcarcel";
+    const ghBase = "https://" + "github.com/" + user;
+    const renderDemo = "https://" + "://onrender.com";
+
+    document.getElementById("demo-link").href = renderDemo;
+    document.getElementById("repo-planner").href = ghBase + "/autonomous-fleet-planner";
+    document.getElementById("repo-roster").href = ghBase + "/student-roster-management";
+    document.getElementById("repo-site").href = ghBase + "/personal-website";
+
+    const ghBtn = document.getElementById("github-profile-btn");
+    ghBtn.href = ghBase;
+    ghBtn.textContent = ghBase;
+
     const canvas = document.getElementById("bg-canvas");
     const ctx = canvas.getContext("2d");
     let width, height, particles;
@@ -334,20 +347,17 @@
       ctx.clearRect(0, 0, width, height);
 
       for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
+const p = particles[i];
+p.x += p.vx;
+p.y += p.vy;
+if (p.x < 0 || p.x > width) p.vx *= -1;
+if (p.y < 0 || p.y > height) p.vy *= -1;
+ctx.beginPath();
+ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
+ctx.fill();
+for (let j = i + 1; j < particles.length; j++) {
+const p2 = particles[j];
 const dx = p.x - p2.x;
 const dy = p.y - p2.y;
 const dist = Math.hypot(dx, dy);
