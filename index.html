@@ -178,7 +178,6 @@
       font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
-      cursor: pointer;
       transition: all 0.2s ease;
     }
 
@@ -260,8 +259,8 @@
             A* pathfinding to route drones around no-fly zones and NumPy to predict remaining battery life.
           </p>
           <div class="btn-row">
-            <a class="btn btn-primary ext-link" data-sub="autonomous-fleet-planner" data-dom="onrender" data-tld="com" target="_blank" rel="noopener">Launch Live Demo</a>
-            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-repo="autonomous-fleet-planner" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-primary" href="https://onrender.com" target="_blank" rel="noopener">Launch Live Demo</a>
+            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -277,7 +276,7 @@
             arrays, pointers, email validation checks, and degree program filters.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-repo="student-roster-management" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -294,7 +293,7 @@
             and live cloud demos hosted on GitHub Pages.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-repo="personal-website" target="_blank" rel="noopener">View Repository</a>
+            <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">View Repository</a>
           </div>
         </div>
 
@@ -305,31 +304,12 @@
       <h2>Contact</h2>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:belkinbal15@hotmail.com">belkinbal15@hotmail.com</a>
-        <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-show-url="true" target="_blank" rel="noopener">GitHub Profile</a>
+        <a class="btn btn-outline" href="https://github.com" target="_blank" rel="noopener">://github.com</a>
       </div>
     </section>
   </main>
 
   <script>
-    const slash = String.fromCharCode(47);
-    const scheme = window.location.protocol + slash + slash;
-
-    document.querySelectorAll(".ext-link").forEach(function (el) {
-      const sub = el.dataset.sub ? el.dataset.sub + "." : "";
-      const host = sub + el.dataset.dom + "." + el.dataset.tld;
-      let path = "";
-      if (el.dataset.user) {
-        path += slash + el.dataset.user;
-      }
-      if (el.dataset.repo) {
-        path += slash + el.dataset.repo;
-      }
-      el.href = scheme + host + path;
-      if (el.dataset.showUrl === "true") {
-        el.textContent = host + path;
-      }
-    });
-
     const canvas = document.getElementById("bg-canvas");
     const ctx = canvas.getContext("2d");
     let width, height, particles;
@@ -340,39 +320,42 @@
     }
 
     function initParticles() {
-const count = Math.min(75, Math.floor((width * height) / 16000));
-particles = Array.from({ length: count }, function () {
-return {
-x: Math.random() * width,
-y: Math.random() * height,
-vx: (Math.random() - 0.5) * 0.55,
-vy: (Math.random() - 0.5) * 0.55,
-r: Math.random() * 2 + 1.2
-};
-});
-}
-function animate() {
-ctx.clearRect(0, 0, width, height);
-for (let i = 0; i < particles.length; i++) {
-const p = particles[i];
-p.x += p.vx;
-p.y += p.vy;
-if (p.x < 0 || p.x > width) p.vx *= -1;
-if (p.y < 0 || p.y > height) p.vy *= -1;
-ctx.beginPath();
-ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
-ctx.fill();
-for (let j = i + 1; j < particles.length; j++) {
-const p2 = particles[j];
-const dx = p.x - p2.x;
+      const count = Math.min(75, Math.floor((width * height) / 16000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.55,
+        vy: (Math.random() - 0.5) * 0.55,
+        r: Math.random() * 2 + 1.2
+      }));
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(232, 165, 152, 0.75)";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
 const dy = p.y - p2.y;
 const dist = Math.hypot(dx, dy);
 if (dist < 135) {
 ctx.beginPath();
 ctx.moveTo(p.x, p.y);
 ctx.lineTo(p2.x, p2.y);
-ctx.strokeStyle = "rgba(232, 165, 152, " + ((1 - dist / 135) * 0.28) + ")";
+ctx.strokeStyle = rgba(232, 165, 152, ${(1 - dist / 135) * 0.28});
 ctx.lineWidth = 1;
 ctx.stroke();
 }
@@ -380,7 +363,7 @@ ctx.stroke();
 }
 requestAnimationFrame(animate);
 }
-window.addEventListener("resize", function () {
+window.addEventListener("resize", () => {
 resize();
 initParticles();
 });
