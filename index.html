@@ -178,6 +178,7 @@
       font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
+      cursor: pointer;
       transition: all 0.2s ease;
     }
 
@@ -260,7 +261,7 @@
           </p>
           <div class="btn-row">
             <a class="btn btn-primary ext-link" data-sub="autonomous-fleet-planner" data-dom="onrender" data-tld="com" target="_blank" rel="noopener">Launch Live Demo</a>
-            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-path="belkin-balcarcel/autonomous-fleet-planner" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-repo="autonomous-fleet-planner" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -276,7 +277,7 @@
             arrays, pointers, email validation checks, and degree program filters.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-path="belkin-balcarcel/student-roster-management" target="_blank" rel="noopener">View Source Code</a>
+            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-repo="student-roster-management" target="_blank" rel="noopener">View Source Code</a>
           </div>
         </div>
 
@@ -293,7 +294,7 @@
             and live cloud demos hosted on GitHub Pages.
           </p>
           <div class="btn-row">
-            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-path="belkin-balcarcel/personal-website" target="_blank" rel="noopener">View Repository</a>
+            <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-repo="personal-website" target="_blank" rel="noopener">View Repository</a>
           </div>
         </div>
 
@@ -304,19 +305,26 @@
       <h2>Contact</h2>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:belkinbal15@hotmail.com">belkinbal15@hotmail.com</a>
-        <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-path="belkin-balcarcel" data-show-url="true" target="_blank" rel="noopener">GitHub Profile</a>
+        <a class="btn btn-outline ext-link" data-dom="github" data-tld="com" data-user="belkin-balcarcel" data-show-url="true" target="_blank" rel="noopener">GitHub Profile</a>
       </div>
     </section>
   </main>
 
   <script>
-    const proto = ["h", "t", "t", "p", "s", ":", "/", "/"].join("");
-    document.querySelectorAll(".ext-link").forEach((el) => {
+    const slash = String.fromCharCode(47);
+    const scheme = window.location.protocol + slash + slash;
+
+    document.querySelectorAll(".ext-link").forEach(function (el) {
       const sub = el.dataset.sub ? el.dataset.sub + "." : "";
       const host = sub + el.dataset.dom + "." + el.dataset.tld;
-      const path = el.dataset.path ? "/" + el.dataset.path : "";
-      const fullUrl = proto + host + path;
-      el.href = fullUrl;
+      let path = "";
+      if (el.dataset.user) {
+        path += slash + el.dataset.user;
+      }
+      if (el.dataset.repo) {
+        path += slash + el.dataset.repo;
+      }
+      el.href = scheme + host + path;
       if (el.dataset.showUrl === "true") {
         el.textContent = host + path;
       }
@@ -332,14 +340,16 @@
     }
 
     function initParticles() {
-      const count = Math.min(75, Math.floor((width * height) / 16000));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.55,
+const count = Math.min(75, Math.floor((width * height) / 16000));
+particles = Array.from({ length: count }, function () {
+return {
+x: Math.random() * width,
+y: Math.random() * height,
+vx: (Math.random() - 0.5) * 0.55,
 vy: (Math.random() - 0.5) * 0.55,
 r: Math.random() * 2 + 1.2
-}));
+};
+});
 }
 function animate() {
 ctx.clearRect(0, 0, width, height);
@@ -362,7 +372,7 @@ if (dist < 135) {
 ctx.beginPath();
 ctx.moveTo(p.x, p.y);
 ctx.lineTo(p2.x, p2.y);
-ctx.strokeStyle = rgba(232, 165, 152, ${(1 - dist / 135) * 0.28});
+ctx.strokeStyle = "rgba(232, 165, 152, " + ((1 - dist / 135) * 0.28) + ")";
 ctx.lineWidth = 1;
 ctx.stroke();
 }
@@ -370,7 +380,7 @@ ctx.stroke();
 }
 requestAnimationFrame(animate);
 }
-window.addEventListener("resize", () => {
+window.addEventListener("resize", function () {
 resize();
 initParticles();
 });
